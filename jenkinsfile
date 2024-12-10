@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clone the repository
+                git branch: 'main', url: 'https://github.com/your-username/python-version-display.git'
+            }
+        }
+        stage('Run Python Script') {
+            steps {
+                // Execute the Python script
+                sh 'python display_version.py || python3 display_version.py'
+            }
+        }
+    }
+}
